@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: eureka-server
+  cloud:
+    config:
+      uri: http://localhost:8888
+  config:
+    import: "optional:configserver:"
+
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: false
+  instance:
+    prefer-ip-address: true
+server:
+  port: 8761

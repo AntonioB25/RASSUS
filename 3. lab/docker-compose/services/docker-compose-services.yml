@@ -1,0 +1,18 @@
+version: '3'
+services:
+    temperature:
+        image: temperature-ms:latest
+        ports: 
+            - "8090:8090"
+
+    humidity:
+        image: huma-ms:latest
+        ports: 
+            - "8060:8060"
+            
+    aggregate:
+        image: aggregator-ms:latest
+        ports: 
+            - "8070:8070"
+        
+ 
