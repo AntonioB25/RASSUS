@@ -28,30 +28,28 @@ public class AggregateController {
 
     IAggregationService aggregationService;
     Configuration configuration;
-
+    @Value("${unit}")
+    String unit;
     @Autowired
     private DiscoveryClient discoveryClient;
 
-    @Value("${unit}")
-    String unit;
-
     @Autowired
-    public AggregateController(IAggregationService aggregationService , Configuration configuration) {
+    public AggregateController(IAggregationService aggregationService, Configuration configuration) {
         this.aggregationService = aggregationService;
         this.configuration = configuration;
     }
 
     @GetMapping("/readings")
-    public List<SensorReading> getAggregatedReadings(){
+    public List<SensorReading> getAggregatedReadings() {
         List<SensorReading> aggregatedReadings = new ArrayList<>();
 
 
-        if(unit.equals("C")){
+        if (unit.equals("C")) {
 
             aggregatedReadings = aggregationService.getReadingInCelsius();
             return aggregatedReadings;
 
-        }else if(unit.equals("K")){
+        } else if (unit.equals("K")) {
             aggregatedReadings = aggregationService.getReadingInKelvin();
             return aggregatedReadings;
         }
@@ -60,7 +58,7 @@ public class AggregateController {
     }
 
     @GetMapping("/endpoint")
-    public String retrieveLimits(){
+    public String retrieveLimits() {
         List<ServiceInstance> list = discoveryClient.getInstances("HUMIDITY-MICROSERVICE");
 
         System.out.println(list.get(0).getUri().toString());

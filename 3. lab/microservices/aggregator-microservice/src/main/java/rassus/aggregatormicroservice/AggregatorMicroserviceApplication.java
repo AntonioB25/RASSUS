@@ -10,8 +10,8 @@ import org.springframework.context.annotation.Configuration;
 @SpringBootApplication
 public class AggregatorMicroserviceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(AggregatorMicroserviceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(AggregatorMicroserviceApplication.class, args);
+    }
 
 }
